@@ -45,7 +45,7 @@ class PlalyerStatsViewController: UIViewController {
     
     private func setupNavigationController() {
         navigationItem.title = "You chose:"
-        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = true
     }
 
 }

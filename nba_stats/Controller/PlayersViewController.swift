@@ -73,7 +73,7 @@ class PlayersViewController: UIViewController, UITableViewDelegate {
     
     func setupNavigationController() {
         navigationItem.title = "\(teamSelected!.abbreviation) - Select Player:"
-        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = true
     }
 
 }
@@ -92,8 +92,8 @@ extension PlayersViewController: UITableViewDataSource, UITextViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = self.playersTableView.indexPathForSelectedRow
-        let playerSelected = playersToShow[indexPath!.row]
+        guard let indexPath = self.playersTableView.indexPathForSelectedRow else { return }
+        let playerSelected = playersToShow[indexPath.row]
         
         let playerStatsVC = PlalyerStatsViewController()
         playerStatsVC.playerSelectedInfo = playerSelected

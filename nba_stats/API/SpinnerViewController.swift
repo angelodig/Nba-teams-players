@@ -31,7 +31,7 @@ extension UIViewController {
         //Add the spinner view controller
         addChild(spinnerView)
         spinnerView.view.frame = viewForShowSpinner.frame
-        view.addSubview(spinnerView.view)
+        viewForShowSpinner.addSubview(spinnerView.view)
         spinnerView.didMove(toParent: self)
         
         //Wait seconds

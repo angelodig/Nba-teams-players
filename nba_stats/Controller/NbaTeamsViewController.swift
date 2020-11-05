@@ -74,7 +74,7 @@ class NbaTeamsViewController: UIViewController {
         navigationItem.title = "Select a Team"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.barTintColor = .orange
-        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = true
     }
 }
 
@@ -96,15 +96,17 @@ extension NbaTeamsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 75
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = self.teamsTableView.indexPathForSelectedRow
-        let teamSelected = allTeams.data[indexPath!.row]
+        guard let indexPath = self.teamsTableView.indexPathForSelectedRow else {return}
+        let teamSelected = allTeams.data[indexPath.row]
         let playersVC = PlayersViewController()
         playersVC.teamSelected = teamSelected
         
         navigationController?.pushViewController(playersVC, animated: true)
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

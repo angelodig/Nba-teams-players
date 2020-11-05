@@ -28,6 +28,7 @@ class TeamTableViewCell: UITableViewCell {
     let conferenceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textAlignment = .center
         label.textColor = .white
         label.backgroundColor = .green
         label.layer.cornerRadius = 5
@@ -38,6 +39,7 @@ class TeamTableViewCell: UITableViewCell {
     
     let divisionLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = .white
         label.backgroundColor = .blue
@@ -46,7 +48,7 @@ class TeamTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    var testo: String = ""
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -76,18 +78,22 @@ class TeamTableViewCell: UITableViewCell {
         ])
         ///cityLabel
         NSLayoutConstraint.activate([
-            cityLabel.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: padding),
+            cityLabel.topAnchor.constraint(equalTo: self.fullNameLabel.bottomAnchor, constant: padding - 10),
             cityLabel.leadingAnchor.constraint(equalTo: self.fullNameLabel.leadingAnchor),
         ])
         ///divisionLabel
         NSLayoutConstraint.activate([
-            divisionLabel.centerYAnchor.constraint(equalTo: self.cityLabel.centerYAnchor),
-            divisionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding)
+            divisionLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            divisionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            divisionLabel.widthAnchor.constraint(equalToConstant: 80),
+            divisionLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
         ///conferenzeLabel
         NSLayoutConstraint.activate([
-            conferenceLabel.centerYAnchor.constraint(equalTo: self.cityLabel.centerYAnchor),
-            conferenceLabel.trailingAnchor.constraint(equalTo: self.divisionLabel.leadingAnchor, constant: -padding)
+            conferenceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            conferenceLabel.trailingAnchor.constraint(equalTo: self.divisionLabel.leadingAnchor, constant: -padding),
+            conferenceLabel.widthAnchor.constraint(equalToConstant: 55),
+            conferenceLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
